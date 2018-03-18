@@ -58,6 +58,7 @@ namespace glui {
 		glUseProgram(program);
 		globalUniforms->BindUniforms(this);
 		uniforms->BindUniforms(this);
+		activeShader = this;
 	}
 
 	void Shader::LinkShader (std::string vertCode, std::string fragCode) {
@@ -164,4 +165,5 @@ namespace glui {
 		return false;
 	}
 	UniformContainer * Shader::globalUniforms = new UniformContainer();
+	Shader * Shader::activeShader;
 };

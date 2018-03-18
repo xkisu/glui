@@ -22,6 +22,7 @@ namespace glui {
 	public:
 		UniformContainer * uniforms;
 		static UniformContainer * globalUniforms;
+		static Shader * activeShader;
 
 		Shader (std::string name);
 		Shader (std::string vert, std::string fragCode, bool code);

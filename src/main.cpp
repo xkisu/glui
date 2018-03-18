@@ -24,28 +24,28 @@ int main () {
 
 	PHYSFS_mount("shaders/", "/shaders", false);
 
-	Shader * shader = new Shader("basic");
+	Shader * shader = new Shader("gui");
+
 	UIElement * element = new UIElement();
+	element->shader = shader;
+	element->SetPosition(100, 100);
+	element->color->SetG(255);
+
+
+
+	int width, height;
 
 	do {
 		window->Poll();
 
-		float ratio;
-		int width, height;
 		glfwGetFramebufferSize(window->window, &width, &height);
-		ratio = width / (float) height;
 		glViewport(0, 0, width, height);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 		Camera::Size((float)width, (float)height);
 
-		shader->uniforms->SetUniform("proj", Camera::GetProjection());
-		shader->uniforms->SetUniform("view", Camera::GetView());
-		glm::mat4 model = glm::mat4(1.0f);
-		// model = glm::translate(model, glm::vec3(.8f, .1f, 0));
-		shader->uniforms->SetUniform("model", model);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		shader->Bind();
+		shader->globalUniforms->SetUniform("proj", Camera::GetProjection());
+		shader->globalUniforms->SetUniform("view", Camera::GetView());
 
 		element->Draw();
 	} while (!window->ShouldClose());

@@ -17,6 +17,7 @@ namespace glui {
 	class UniformContainer {
 	public:
 		void SetUniform (std::string name, glm::mat4& val) ;
+		void SetUniform (std::string name, glm::vec4& val);
 		void SetUniform (std::string name, glm::vec3& val);
 		void SetUniform (std::string name, glm::vec2& val);
 		void SetUniform (std::string name, int& val);
@@ -24,6 +25,7 @@ namespace glui {
 		void BindUniforms (Shader *shader);
 	private:
 		std::map<std::string, glm::mat4&> mat4Uniforms = {};
+		std::map<std::string, glm::vec4&> vec4Uniforms = {};
 		std::map<std::string, glm::vec3&> vec3Uniforms = {};
 		std::map<std::string, glm::vec2&> vec2Uniforms = {};
 		std::map<std::string, int&> intUniforms = {};
