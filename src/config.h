@@ -1,0 +1,10 @@
+
+#ifndef GLUI_CONFIG_H
+#define GLUI_CONFIG_H
+
+#define WINDOW_WIDTH 1280
+#define WINDOW_HEIGHT 720
+
+#define WINDOW_TITLE "GLUI Test"
+
+#endif //GLUI_CONFIG_H

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\ldd20\CLionProjects\glui\src\external\glew\build\cmake\CMakeFiles\3099676d440f4c9550842e1243d43ecb\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{6DF81CA3-DDEB-36C5-A7B7-D56ABCE17CF2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

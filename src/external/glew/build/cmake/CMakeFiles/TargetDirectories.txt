@@ -1,0 +1,8 @@
+C:/Users/ldd20/CLionProjects/glui/src/external/glew/build/cmake/CMakeFiles/glew.dir
+C:/Users/ldd20/CLionProjects/glui/src/external/glew/build/cmake/CMakeFiles/glew_s.dir
+C:/Users/ldd20/CLionProjects/glui/src/external/glew/build/cmake/CMakeFiles/INSTALL.dir
+C:/Users/ldd20/CLionProjects/glui/src/external/glew/build/cmake/CMakeFiles/glewinfo.dir
+C:/Users/ldd20/CLionProjects/glui/src/external/glew/build/cmake/CMakeFiles/visualinfo.dir
+C:/Users/ldd20/CLionProjects/glui/src/external/glew/build/cmake/CMakeFiles/uninstall.dir
+C:/Users/ldd20/CLionProjects/glui/src/external/glew/build/cmake/CMakeFiles/ALL_BUILD.dir
+C:/Users/ldd20/CLionProjects/glui/src/external/glew/build/cmake/CMakeFiles/ZERO_CHECK.dir

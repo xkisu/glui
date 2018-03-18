@@ -1,0 +1,4 @@
+﻿  Building Custom Rule C:/Users/ldd20/CLionProjects/glui/src/external/glew/build/cmake/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/ldd20/CLionProjects/glui/src/external/glew/build/cmake/CMakeFiles/generate.stamp is up-to-date.
+  glew.c
+  glew_s.vcxproj -> C:\Users\ldd20\CLionProjects\glui\src\external\glew\build\cmake\lib\Release\libglew32.lib
