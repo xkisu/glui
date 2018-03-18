@@ -9,6 +9,9 @@
 #include "graphics/camera.h"
 #include "ui/ui_element.h"
 
+#include "systems/file_manager.h"
+#include "systems/renderer.h"
+
 using namespace glui;
 
 int main () {
@@ -16,22 +19,14 @@ int main () {
 
 	Window * window = new Window();
 
-
-	if(PHYSFS_init(NULL) != 1) {
-		throw std::runtime_error("Error initializing PHYSFS!");
-	}
-
-
-	PHYSFS_mount("shaders/", "/shaders", false);
-
-	Shader * shader = new Shader("gui");
+	FileManager::Initialize();
+	Renderer::Initialize();
+	Shader::Initialize();
 
 	UIElement * element = new UIElement();
-	element->shader = shader;
+	element->shader = Shader::Load("gui");
 	element->SetPosition(100, 100);
 	element->color->SetG(255);
-
-
 
 	int width, height;
 
@@ -44,17 +39,18 @@ int main () {
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		shader->globalUniforms->SetUniform("proj", Camera::GetProjection());
-		shader->globalUniforms->SetUniform("view", Camera::GetView());
+		Shader::globalUniforms->SetUniform("proj", Camera::GetProjection());
+		Shader::globalUniforms->SetUniform("view", Camera::GetView());
 
 		element->Draw();
 	} while (!window->ShouldClose());
 
 	delete element;
-	delete shader;
+	Shader::Uninitialize();
+	Renderer::Uninitialize();
 	delete window;
 
-	PHYSFS_deinit();
+	FileManager::Terminate();
 
 	return 0;
 }

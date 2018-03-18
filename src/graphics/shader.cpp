@@ -2,9 +2,10 @@
 #include "uniform_container.h"
 
 #include <physfs.h>
+#include <systems/file_manager.h>
 
 namespace glui {
-	static std::string LoadShaderCode (std::string name) {
+	/* static std::string LoadShaderCode (std::string name) {
 		std::string s = "/shaders/" + name;
 		const char * path = s.c_str();
 		if(!PHYSFS_exists(path)) {
@@ -20,11 +21,11 @@ namespace glui {
 		PHYSFS_close(vertFile);
 
 		return std::string(buf);
-	}
+	} */
 
 	Shader::Shader (std::string name) {
-		std::string vert = LoadShaderCode(name + std::string(".vert"));
-		std::string frag = LoadShaderCode(name + std::string(".frag"));
+		std::string vert = FileManager::ReadFileText("/shaders/" + name + std::string(".vert"));
+		std::string frag = FileManager::ReadFileText("/shaders/" + name + std::string(".frag"));
 
 		if(vert.size() <= 0) {
 			throw std::runtime_error("Vertex shader does not exist!");
@@ -40,8 +41,8 @@ namespace glui {
 		if(code) {
 			LinkShader(vertCode, fragCode);
 		} else {
-			std::string vert = LoadShaderCode(vertCode);
-			std::string frag = LoadShaderCode(fragCode);
+			std::string vert = FileManager::ReadFileText("/shaders/" + vertCode);
+			std::string frag = FileManager::ReadFileText("/shaders/" + fragCode);
 
 			LinkShader(vert, frag);
 		}
@@ -51,6 +52,16 @@ namespace glui {
 		if(program != GL_FALSE) {
 			glUseProgram(0);
 			glDeleteProgram(program);
+		}
+	}
+
+	Shader * Shader::Load (std::string name) {
+		auto iter = shaderCache.find(name);
+		if (iter != shaderCache.end() ) {
+			return iter->second;
+		} else {
+			Shader * shader = new Shader(name);
+			shaderCache.insert(std::pair<std::string, Shader*>(name, shader));
 		}
 	}
 
@@ -166,4 +177,5 @@ namespace glui {
 	}
 	UniformContainer * Shader::globalUniforms = new UniformContainer();
 	Shader * Shader::activeShader;
+	std::map<std::string, Shader*> Shader::shaderCache;
 };

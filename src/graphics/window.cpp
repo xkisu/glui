@@ -10,9 +10,7 @@ static void error_callback(int error, const char* description)  {
 	_fgetchar();
 }
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
-	glViewport(0, 0, width, height);
-}
+
 
 namespace glui {
 	Window::Window () {
@@ -26,6 +24,7 @@ namespace glui {
 
 			// glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_FALSE);
 			window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE, NULL, NULL);
+			size = glm::vec2(WINDOW_WIDTH, WINDOW_HEIGHT);
 			if (!window) {
 				// Window or context creation failed
 				glfwTerminate();
@@ -68,5 +67,10 @@ namespace glui {
 	}
 	bool Window::ShouldClose () {
 		return glfwWindowShouldClose(window);
+	}
+
+	void Window::framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+		glViewport(0, 0, width, height);
+		size = glm::vec2(width, height);
 	}
 };

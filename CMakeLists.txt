@@ -3,7 +3,7 @@ project(glui)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(glui src/main.cpp src/config.h src/graphics/window.cpp src/graphics/window.h src/graphics/shader.h src/graphics/shader.cpp src/graphics/uniform_container.h src/graphics/uniform_container.cpp src/ui/ui_element.cpp src/ui/ui_element.h src/graphics/camera.cpp src/graphics/camera.h src/util/color.h)
+add_executable(glui src/main.cpp src/config.h src/graphics/window.cpp src/graphics/window.h src/graphics/shader.h src/graphics/shader.cpp src/graphics/uniform_container.h src/graphics/uniform_container.cpp src/ui/ui_element.cpp src/ui/ui_element.h src/graphics/camera.cpp src/graphics/camera.h src/util/color.h src/systems/renderer.cpp src/systems/renderer.h src/systems/file_manager.cpp src/systems/file_manager.h)
 
 include_directories(src/)
 
